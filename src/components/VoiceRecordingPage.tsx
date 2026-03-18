@@ -213,7 +213,7 @@ export default function VoiceRecordingPage({
                 <li>• Ideally use headphones with a built-in microphone</li>
               </ul>
               <div className="pt-3 border-t border-blue-200 mt-3">
-                <p className="text-sm text-blue-700 font-medium">💬 Aim for around 8 seconds of audio for the best AI quality</p>
+                <p className="text-sm text-blue-700 font-medium">💬 Aim for at least 10 seconds of audio for the best AI quality</p>
               </div>
             </div>
 
