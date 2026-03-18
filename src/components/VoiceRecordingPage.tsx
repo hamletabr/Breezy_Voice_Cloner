@@ -150,7 +150,7 @@ export default function VoiceRecordingPage({
         {/* Purpose Statement */}
         <div className="text-center">
           <p className="text-gray-700 text-lg font-semibold">
-            We'll use this to make your AI sound like you when answering customers.
+            We&apos;ll use this to make your AI sound like you when answering customers.
           </p>
         </div>
 
@@ -223,8 +223,8 @@ export default function VoiceRecordingPage({
                 Example script (optional)
               </p>
               <p className="text-base text-gray-600 italic px-4">
-                "Hey, this is [Your Business Name]—how can I help? 
-                Um, yeah, just let me know what's going on and I'll take care of it."
+                &quot;Hey, this is [Your Business Name]&mdash;how can I help? 
+                Um, yeah, just let me know what&apos;s going on and I&apos;ll take care of it.&quot;
               </p>
               <p className="text-sm text-gray-500 mt-3">
                 Or just say whatever feels natural to you
