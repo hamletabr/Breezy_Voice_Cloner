@@ -40,7 +40,7 @@ export default function SignUpPage({ onBack }: SignUpPageProps) {
           </div>
 
           <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-            We&apos;ve sent a confirmation email to <span className="font-semibold text-gray-900">{email}</span>. Your AI voice assistant is ready to transform your customer service.
+            We&apos;ve sent a confirmation email to <span className="font-semibold text-gray-900">{email}</span>. Your AI voice assistant is ready to transform your customer service!
           </p>
 
           <button
