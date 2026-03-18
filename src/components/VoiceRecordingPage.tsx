@@ -3,18 +3,15 @@
 import { useState, useRef } from "react";
 
 interface VoiceRecordingPageProps {
-  onRecordingComplete: (audioBlob: Blob, audioUrl: string) => void;
-  onBack: () => void;
+  onRecordingComplete: (audioBlob: Blob) => void;
 }
 
 export default function VoiceRecordingPage({
   onRecordingComplete,
-  onBack,
 }: VoiceRecordingPageProps) {
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
   const [isRecording, setIsRecording] = useState(false);
-  const [isInitializing, setIsInitializing] = useState(false);
   const [recordingTime, setRecordingTime] = useState(0);
   const [hasRecording, setHasRecording] = useState(false);
   const [previewUrl, setPreviewUrl] = useState<string>("");
@@ -23,8 +20,6 @@ export default function VoiceRecordingPage({
 
   const startRecording = async () => {
     try {
-      // Set initializing state to show loading feedback
-      setIsInitializing(true);
       setError("");
       setRecordingTime(0);
 
@@ -62,11 +57,9 @@ export default function VoiceRecordingPage({
 
       // Only update UI after microphone setup is complete
       setIsRecording(true);
-      setIsInitializing(false);
     } catch (err) {
       // Revert UI state if microphone access fails
       setIsRecording(false);
-      setIsInitializing(false);
       
       // Provide user-friendly error messages
       let errorMessage = "Failed to access microphone. Please check permissions.";
@@ -99,7 +92,7 @@ export default function VoiceRecordingPage({
   const handleSubmit = () => {
     if (previewUrl && mediaRecorderRef.current) {
       const audioBlob = new Blob(audioChunksRef.current, { type: "audio/webm" });
-      onRecordingComplete(audioBlob, previewUrl);
+      onRecordingComplete(audioBlob);
     }
   };
 

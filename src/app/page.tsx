@@ -22,12 +22,12 @@ export default function Home() {
     setPageState("voice-recording");
   };
 
-  const handleVoiceRecordingComplete = (audioBlob: Blob, audioUrl: string) => {
+  const handleVoiceRecordingComplete = (audioBlob: Blob) => {
     setRecordingBlob(audioBlob);
     setPageState("voice-processing");
   };
 
-  const handleVoiceProcessingComplete = (newVoiceId: string) => {
+  const handleVoiceProcessingComplete = () => {
     // Voice ID no longer needed - using static audio files instead
     setPageState("voice-chat");
   };
@@ -51,19 +51,16 @@ export default function Home() {
       {pageState === "voice-recording" && (
         <VoiceRecordingPage
           onRecordingComplete={handleVoiceRecordingComplete}
-          onBack={() => setPageState("landing")}
         />
       )}
       {pageState === "voice-processing" && (
         <ProcessingPage
           recordingBlob={recordingBlob || undefined}
           onComplete={handleVoiceProcessingComplete}
-          onBack={() => setPageState("voice-recording")}
         />
       )}
       {pageState === "voice-chat" && (
         <PersonalizedAIChat
-          onBack={handleReset}
           onComplete={handleChatComplete}
         />
       )}

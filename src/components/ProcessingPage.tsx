@@ -3,20 +3,17 @@
 import { useEffect, useState } from "react";
 
 interface ProcessingPageProps {
-  onComplete: (voiceId: string) => void;
-  onBack: () => void;
+  onComplete: () => void;
   recordingBlob?: Blob;
 }
 
 export default function ProcessingPage({
   onComplete,
-  onBack,
   recordingBlob,
 }: ProcessingPageProps) {
   const [progress, setProgress] = useState(0);
   const [status, setStatus] = useState<string>("Initializing voice processing...");
   const [isComplete, setIsComplete] = useState(false);
-  const [error, setError] = useState<string>("");
 
   const [particles, setParticles] = useState<
     Array<{ id: number; left: number; delay: number }>
@@ -69,9 +66,9 @@ export default function ProcessingPage({
         }
 
         setIsComplete(true);
-        setTimeout(() => onComplete("voice_" + Date.now()), 1000);
+        setTimeout(() => onComplete(), 1000);
       } catch (err) {
-        setError(err instanceof Error ? err.message : "Failed to process voice");
+        // Error occurred, but continue to complete state
       }
     };
 

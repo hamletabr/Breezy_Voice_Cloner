@@ -10,7 +10,6 @@ interface TestingQuestion {
 }
 
 interface PersonalizedAIChatProps {
-  onBack: () => void;
   onComplete?: () => void;
 }
 
@@ -84,7 +83,6 @@ const MOCK_RESPONSES: { [key: string]: string } = {
 };
 
 export default function PersonalizedAIChat({
-  onBack,
   onComplete,
 }: PersonalizedAIChatProps) {
   const [selectedQuestion, setSelectedQuestion] = useState<string | null>(null);
